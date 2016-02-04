@@ -21,8 +21,8 @@ function addImages(response) {
   });
 }
 
-function fillModal(author, title, dateTaken, tags){
-  var leftCol = "<div class=\"col-xs-6 pull-left\">Picture</div>"
+function fillModal(author, title, dateTaken, tags, picture){
+  var leftCol = "<div class=\"col-xs-6 pull-left\"><img src=\""+picture+"\"</div>"
   var rightCol = "<div class=\"col-xs-6 pull-right\"><strong>Title: </strong>"+title+"<br><strong>Author: </strong>"+author+"<br><strong>Date Taken: </strong>"+dateTaken+"<br><strong>Tags: </strong>"+tags+"</div>"
   $(".modal-body").append(leftCol).append(rightCol);
 }
@@ -33,9 +33,8 @@ function bindImages(){
     var title=$(this).parent().data("title");
     var dateTaken=$(this).parent().data("date");
     var tags=$(this).parent().data("tags");
-    var picture=$(this).filter("img");
-    console.log(picture);
-    fillModal(author, title, dateTaken, tags);
+    var picture=$(this).context.currentSrc;
+    fillModal(author, title, dateTaken, tags, picture);
     $("#edit-modal").modal("show");
   });
   $("#close").on("click", function(){
