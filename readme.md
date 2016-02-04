@@ -5,7 +5,7 @@ Implement a simple photo search using the [Flickr Public Feed](https://www.flick
 #### Your Tasks
 
 - Search Flickr public photos based on `tags` and `tag mode` provided by users.
-- Display the photos in a 4 x 5 grid (note: at most, 20 photos will be returned).
+- Display the photos in a 5x4 grid (note: at most, 20 photos will be returned).
 
 #### Configurations
 - Use this url in your `ajax` request:
