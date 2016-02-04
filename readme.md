@@ -18,7 +18,8 @@ https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?
     $.ajax({
       url: "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
       data: {
-        // YOUR DATA
+        format: 'json'
+        // YOUR PARAMETERS
       },
       dataType: 'jsonp',
       success: // YOUR CALLBACK
