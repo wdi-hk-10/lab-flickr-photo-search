@@ -1,5 +1,6 @@
 // YOUR CODE HERE
 $(document).ready(function (){
+  var $images = $("#images");
 
   var getPhoto = function (){
     $.ajax({
@@ -8,24 +9,30 @@ $(document).ready(function (){
       data: {
         format: "json",
         tags: $(".form-control").val(),
-        tagmode: $(".btn dropdown-toggle btn-default").val(),
+        tagmode: $(".selectpicker").val(),
         link: "link"
       },
       dataType: 'jsonp',
-      success: function (response, status) {
-        console.log(response);
-        // console.log(response.items);
-        var object = response.items;
-        var newImages = object.forEach(function (data){
-          // console.log(data.media.m);
-          $("<img>").attr("src", data.media.m).appendTo($("#images"));
-        });
-      },
+      success: displayImages,
       error: function (response, status) {
         console.log(response);
       }
     });
-  };
+  }
+
+  function displayImages(data){
+    var $row;
+    data.items.forEach(function (item, index){
+          // console.log(data.media.m);
+        var $img = $("<img>").addClass("img-thumbnail").attr("src", item.media.m);
+        if (index % 4 === 0) {
+          $row = $('<div class="row">').appendTo($images);
+        }
+        var $col = $('<div class="col-lg-3">').appendTo($row);
+        $col.append($img);
+    });
+  }
+
 
   var searchButton = function () {
     $("#search").on("click", function(){
